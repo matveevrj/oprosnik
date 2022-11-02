@@ -1,7 +1,9 @@
 import openpyxl
 import os
 import shutil
-
+# Скрипт для формирования опросных листов
+# Версия программы:
+Version = '1.2'
 
 def saving(file_name):
     if not os.path.exists(UserPath + '/' + file_name):
@@ -21,7 +23,7 @@ def saving(file_name):
     sh.close()
 
 def exd_type(type):
-    if Exd == 'Ex' or Exd == 'да' or Exd != '-':
+    if Exd == 'Ex' or Exd == 'да' or Exd == 'Exd':
         list1[type].value = 'Взрывозащищенное (Exd)'  # Вид исполнения
     else:
         list1[type].value = 'Общепромышленное'
@@ -31,6 +33,8 @@ def exd_entry(entry):
     else:
         list1[entry].value = 'Нет'
 
+print('Версия программы: ', Version, ' от 12.10.2022')
+print('При копировании пути к исходному файлу, следите, чтобы не было ковычек!')
 print('Введите путь к исходному Перечню КИП:')
 book = input()
 print('Куда сохранить созданные опросные листы? Введите путь:')
@@ -132,8 +136,8 @@ for stroka in range(3, sheet.max_row + 1):
             list1['F39'].value = CableEntry  # Тип кабельного ввода
             # Взрывозащита
 
-            exd_type('F41')
-            exd_entry('F43')
+            exd_type('F41')  # Вид исполнения
+            exd_entry('F43')   # Взрывозащищенность кабельного ввода
 
   #          if Exd == 'Ex':
   #              list1['F41'].value = 'Взрывозащищенное (Exd)'  # Вид исполнения
@@ -179,15 +183,10 @@ for stroka in range(3, sheet.max_row + 1):
             list1['F28'].value = UHL  # Климатическое исполнение
             list1['F29'].value = CableEntry  # Тип кабельного ввода
             # Взрывозащита
-            if Exd == 'Ex':
-                list1['F31'].value = 'Взрывозащищенное (Exd)'  # Вид исполнения
-            else:
-                list1['F31'].value = 'Общепромышленное'
+            exd_type('F31')  # Вид исполнения
+            exd_entry('F33')  # Взрывозащищенность кабельного ввода
             list1['F32'].value = ExdEnv  # Вещество для определения степени взрывозащиты
-            if Exd == 'Ex':
-                list1['F33'].value = 'Да'  # Взрывозащищенность кабельного ввода
-            else:
-                list1['F33'].value = 'Нет'
+
             # Интерфейс
             list1['F35'].value = LED  # Наличие индикации
             list1['F36'].value = Screen  # Лок. интерфейс оператора для настройки датчика
@@ -228,15 +227,11 @@ for stroka in range(3, sheet.max_row + 1):
             list1['F36'].value = UHL  # Климатическое исполнение
             list1['F37'].value = CableEntry  # Тип кабельного ввода
             # Взрывозащита
-            if Exd == 'Ex':
-                list1['F39'].value = 'Взрывозащищенное (Exd)'  # Вид исполнения
-            else:
-                list1['F39'].value = 'Общепромышленное'
+            exd_type('F39')  # Вид исполнения
+            exd_entry('F41')  # Взрывозащищенность кабельного ввода
+
             list1['F40'].value = ExdEnv  # Вещество для определения степени взрывозащиты
-            if Exd == 'Ex':
-                list1['F41'].value = 'Да'  # Взрывозащищенность кабельного ввода
-            else:
-                list1['F41'].value = 'Нет'
+
             # Интерфейс
             list1['F43'].value = LED  # Наличие индикации
             list1['F44'].value = Screen  # Лок. интерфейс оператора для настройки датчика
@@ -274,15 +269,11 @@ for stroka in range(3, sheet.max_row + 1):
             list1['F36'].value = UHL  # Климатическое исполнение
             list1['F37'].value = CableEntry  # Тип кабельного ввода
             # Взрывозащита
-            if Exd == 'Ex':
-                list1['F39'].value = 'Взрывозащищенное (Exd)'  # Вид исполнения
-            else:
-                list1['F39'].value = 'Общепромышленное'
+            exd_type('F39')  # Вид исполнения
+            exd_entry('F41')  # Взрывозащищенность кабельного ввода
+
             list1['F40'].value = ExdEnv  # Вещество для определения степени взрывозащиты
-            if Exd == 'Ex':
-                list1['F41'].value = 'Да'  # Взрывозащищенность кабельного ввода
-            else:
-                list1['F41'].value = 'Нет'
+
             # Интерфейс
             list1['F43'].value = LED  # Наличие индикации
             list1['F44'].value = Screen  # Лок. интерфейс оператора для настройки датчика
@@ -321,15 +312,11 @@ for stroka in range(3, sheet.max_row + 1):
             list1['F35'].value = UHL  # Климатическое исполнение
             list1['F36'].value = CableEntry  # Тип кабельного ввода
             # Взрывозащита
-            if Exd == 'Ex':
-                list1['F38'].value = 'Взрывозащищенное (Exd)'  # Вид исполнения
-            else:
-                list1['F38'].value = 'Общепромышленное'
+            exd_type('F38')  # Вид исполнения
+            exd_entry('F40')  # Взрывозащищенность кабельного ввода
+
             list1['F39'].value = ExdEnv  # Вещество для определения степени взрывозащиты
-            if Exd == 'Ex':
-                list1['F40'].value = 'Да'  # Взрывозащищенность кабельного ввода
-            else:
-                list1['F40'].value = 'Нет'
+
             # Интерфейс
             list1['F42'].value = LED  # Наличие индикации
             list1['F43'].value = Screen  # Лок. интерфейс оператора для настройки датчика
@@ -340,8 +327,10 @@ for stroka in range(3, sheet.max_row + 1):
             saving(file_name)
             counter = counter + 1
 
-        if Designator == 'PT' or Designator == 'РT' or Designator == 'PТ' or Designator == 'РТ' \
-                or Designator == 'РDТ' or Designator == 'PDТ' or Designator == 'PDТ' or Designator == 'РDТ':
+        PTs = ['PT', 'РT', 'PТ', 'РТ', 'PDT', 'PDТ', 'PDТ', 'РDТ']
+
+        if Designator in PTs:
+
             sh = openpyxl.load_workbook('PT.xlsx')
             list1 = sh.active
             # Общие данные
@@ -369,15 +358,11 @@ for stroka in range(3, sheet.max_row + 1):
             list1['F35'].value = UHL  # Климатическое исполнение
             list1['F36'].value = CableEntry  # Тип кабельного ввода
             # Взрывозащита
-            if Exd == 'Ex':
-                list1['F38'].value = 'Взрывозащищенное (Exd)'  # Вид исполнения
-            else:
-                list1['F38'].value = 'Общепромышленное'
+            exd_type('F38')  # Вид исполнения
+            exd_entry('F40')  # Взрывозащищенность кабельного ввода
+
             list1['F39'].value = ExdEnv  # Вещество для определения степени взрывозащиты
-            if Exd == 'Ex':
-                list1['F40'].value = 'Да'  # Взрывозащищенность кабельного ввода
-            else:
-                list1['F40'].value = 'Нет'
+
             # Принадлежности
             list1['F42'].value = ValveBlock  # Клапанный блок
             list1['F43'].value = Cooler  # Охладитель
@@ -419,15 +404,11 @@ for stroka in range(3, sheet.max_row + 1):
             list1['F35'].value = UHL  # Климатическое исполнение
             list1['F36'].value = CableEntry  # Тип кабельного ввода
             # Взрывозащита
-            if Exd == 'Ex':
-                list1['F38'].value = 'Взрывозащищенное (Exd)'  # Вид исполнения
-            else:
-                list1['F38'].value = 'Общепромышленное'
+            exd_type('F38')  # Вид исполнения
+            exd_entry('F40')  # Взрывозащищенность кабельного ввода
+
             list1['F39'].value = ExdEnv  # Вещество для определения степени взрывозащиты
-            if Exd == 'Ex':
-                list1['F40'].value = 'Да'  # Взрывозащищенность кабельного ввода
-            else:
-                list1['F40'].value = 'Нет'
+
             # Интерфейс
             list1['F42'].value = LED  # Наличие индикации
             list1['F43'].value = Screen  # Лок. интерфейс оператора для настройки датчика
@@ -465,10 +446,8 @@ for stroka in range(3, sheet.max_row + 1):
             list1['F34'].value = IP  # Степень пылевлагозащиты IP
             list1['F35'].value = UHL  # Климатическое исполнение
             # Взрывозащита
-            if Exd == 'Exd':
-                list1['F37'].value = 'Взрывозащищенное (Exd)'  # Вид исполнения
-            else:
-                list1['F37'].value = 'Общепромышленное'
+            exd_type('F37')  # Вид исполнения
+
             list1['F38'].value = ExdEnv  # Вещество для определения степени взрывозащиты
 
             # Принадлежности
@@ -506,15 +485,11 @@ for stroka in range(3, sheet.max_row + 1):
             list1['F32'].value = UHL  # Климатическое исполнение
             list1['F33'].value = CableEntry  # Тип кабельного ввода
             # Взрывозащита
-            if Exd == 'Ex':
-                list1['F35'].value = 'Взрывозащищенное (Exd)'  # Вид исполнения
-            else:
-                list1['F35'].value = 'Общепромышленное'
+            exd_type('F35')  # Вид исполнения
+            exd_entry('F37')  # Взрывозащищенность кабельного ввода
+
             list1['F36'].value = ExdEnv  # Вещество для определения степени взрывозащиты
-            if Exd == 'Ex':
-                list1['F37'].value = 'Да'  # Взрывозащищенность кабельного ввода
-            else:
-                list1['F37'].value = 'Нет'
+
             # Интерфейс
             list1['F39'].value = LED  # Наличие индикации
             list1['F39'].value = Screen  # Лок. интерфейс оператора для настройки датчика
@@ -525,6 +500,43 @@ for stroka in range(3, sheet.max_row + 1):
             saving(file_name)
             counter = counter + 1
 
+        if Designator == 'TG' or Designator == 'ТG':
+            sh = openpyxl.load_workbook('TG.xlsx')
+            list1 = sh.active
+            # Общие данные
+            list1['F16'].value = Designator + '-' + Position  # Позиция по ТХ
+            list1['F17'].value = Type_device  # Измеряемый параметр
+            list1['F18'].value = Environment  # Наименование измеряемой среды
+            list1['F19'].value = Location  # Место установки
+            # Технологические характеристики
+            list1['F21'].value = Range  # Диапазон измерения
+            list1['E21'].value = Unit #Единица измерения
+            list1['F22'].value = Scale  # Шкала
+            list1['E22'].value = Unit  # Единица измерения
+            list1['F23'].value = Scale  # Абсолютная погрешность измерения
+            list1['F24'].value = Pressure  # Давление среды
+            list1['F25'].value = Temperature  # Температура в точке монтажа
+            list1['F26'].value = ExplTemp  # Температура окружающего воздуха
+            list1['F27'].value = Density  # Плотность
+            list1['F28'].value = Viscosity  # Вязкость
+            list1['F29'].value = Special_properties  # Особые свойства
+            # Механические характеристики
+            list1['F31'].value = Connection  # Соединение с процессом
+            list1['F32'].value = Cartridge  # Гильза
+            list1['F33'].value = ProcessMaterial  # Материальное исполнение в контакте с рабочей средой
+            list1['F34'].value = IP  # Степень пылевлагозащиты IP
+            list1['F35'].value = UHL  # Климатическое исполнение
+            # Взрывозащита
+            exd_type('F37')  # Вид исполнения
+
+            list1['F38'].value = ExdEnv  # Вещество для определения степени взрывозащиты
+
+            # Примечание
+            list1['A40'].value = Note  # Примечание
+
+            file_name = Designator + ' ' + Position + '.xlsx'
+            saving(file_name)
+            counter = counter + 1
 print('Создание опросных листов завершено. Создано ', counter, ' опросных листов.')
 
 input()
